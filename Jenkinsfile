@@ -21,6 +21,13 @@ pipeline{
             }
         }
 
-        // Add the "Deploy" stage here
+        Stage('Deploy') {
+ steps {
+ sh '''
+ oc project ouzsio-greetings
+ oc start-build greeting-service --follow --wait
+ '''
     }
+}
+}
 }
